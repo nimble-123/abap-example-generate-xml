@@ -1,0 +1,31 @@
+<?sap.transform simple?>
+<tt:transform xmlns:tt="http://www.sap.com/transformation-templates" xmlns:ddic="http://www.sap.com/abapxml/types/dictionary" xmlns:def="http://www.sap.com/abapxml/types/defined">
+  <tt:root name="ORDEREXPORT" type="ddic:ZORDEREXPORT_TYPE"/>
+  <tt:template>
+    <ORDEREXPORT>
+      <EXPORTDATE tt:value-ref=".ORDEREXPORT.EXPORTDATE"/>
+      <EXPORTTIME tt:value-ref=".ORDEREXPORT.EXPORTTIME"/>
+      <EXPORTUSER tt:value-ref=".ORDEREXPORT.EXPORTUSER"/>
+      <ORDERS>
+        <tt:loop ref=".ORDEREXPORT.ORDERS">
+          <ORDER>
+            <ORDERID tt:value-ref="ORDERID"/>
+            <CUSTOMERID tt:value-ref="CUSTOMERID"/>
+            <ORDDATE tt:value-ref="ORDDATE"/>
+            <OSTATUS tt:value-ref="OSTATUS"/>
+            <TOTALPRICE tt:value-ref="TOTALPRICE"/>
+            <ORDERITEMS>
+              <tt:loop ref="ORDERITEMS">
+                <ORDERITEM>
+                  <BOOKID tt:value-ref="BOOKID"/>
+                  <QUANTITY tt:value-ref="QUANTITY"/>
+                  <UNITPRICE tt:value-ref="UNITPRICE"/>
+                </ORDERITEM>
+              </tt:loop>
+            </ORDERITEMS>
+          </ORDER>
+        </tt:loop>
+      </ORDERS>
+    </ORDEREXPORT>
+  </tt:template>
+</tt:transform>
